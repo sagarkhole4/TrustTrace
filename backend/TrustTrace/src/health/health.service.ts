@@ -11,9 +11,9 @@ export class ServiceHealthIndicator extends HealthIndicator {
   async checkDB(): Promise<HealthIndicatorResult> {
     try {
       await this.prismaService.$queryRaw`SELECT 1`;
-      return this.getStatus('NDI database', true);
+      return this.getStatus('database', true);
     } catch (e) {
-      throw new HealthCheckError('NDI database', this.getStatus('NDI database', false));
+      throw new HealthCheckError('database', this.getStatus('database', false));
     }
   }
 }
